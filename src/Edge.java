@@ -22,6 +22,7 @@ public class Edge implements Comparable<Edge>{
     }
 
 
+
     public Vertex getVertex1() {
         return vertex1;
     }

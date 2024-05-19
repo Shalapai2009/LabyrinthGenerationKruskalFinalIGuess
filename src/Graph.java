@@ -4,11 +4,10 @@ public class Graph {
     private Vertex[][] vertexMatrix;
     private List<Edge> listOfEdges = new ArrayList<>();
     private List<Vertex> listOfVertex = new ArrayList<>();
-   // private List<FreackingUselles.VertexTree> listOfVertexTree = new ArrayList<>();
     public Graph(int x, int y) {
         vertexMatrix = new Vertex[x][y];
         createField();
-        giveVertexEdges();
+       // giveVertexAllEdges();
        // printGraph();
 
     }
@@ -41,7 +40,7 @@ public class Graph {
             }
         }
     }
-    public void giveVertexEdges() {
+    public void giveVertexAllEdges() {
         Deque<Vertex> deque = new ArrayDeque<>();
         deque.add(vertexMatrix[0][0]);
         while (deque.size() > 0) {
@@ -68,18 +67,18 @@ public class Graph {
         }
 
     }
-    public void doKruskal() {
+    public void giveVertexEdgesDefinite() {
+        for (Edge edge: this.doKruskal()) {
+
+        }
+    }
+    public List<Edge> doKruskal() {
         Collections.sort(listOfEdges);
         SpanningTree spanningTree = new SpanningTree(this);
         spanningTree.createDaFuckingTrulyGoddessSpanningTree();
         List<Edge> listOfTrue = spanningTree.getListOfTrue();
-        /*for (Edge list: listOfEdges) {
-           if  (spanningTree.getListOfTrue().contains(list)){
-               list.makeRed();
-               list.getBROTHA().makeRed();
-           }
-        }*/
         System.out.println("whomp whomp");
+        return listOfTrue;
     }
 
     public List<Edge> getListOfEdges() {
@@ -95,6 +94,8 @@ public class Graph {
 
     public Vertex[][] getVertexMatrix() {
         return vertexMatrix;
+    }
+    public void DeleteEdge(Edge edge){
     }
     public void printGraph() {
         int k =0;
@@ -147,28 +148,5 @@ public class Graph {
             System.out.print("¯¯¯¯¯¯");
         }
 
-    }
-    public void printGraphNormally(){
-        Object[][] pizdec = new Object[vertexMatrix.length+ vertexMatrix.length-1][vertexMatrix[0].length+vertexMatrix[0].length];
-        int k =0;
-        for (int i = 0; i < pizdec.length-1; i++) {
-            for (int j = 0; j < pizdec[i].length-1; j++) {
-                if (pizdec[i][j] == null){
-                    pizdec[i][j] = listOfVertex.get(k);
-                    if (listOfVertex.get(k).findInListEdgeByVertex2(listOfVertex.get(k+1)).getType() == Edge.Type.WALL) {
-                        pizdec[i][j+1] = "Wall";
-                    }
-                    else {pizdec[i][j+1] = "Road";}
-                    if (listOfVertex.get(k).findInListEdgeByVertex2(listOfVertex.get(k+1)).getType() == Edge.Type.WALL) {
-                        pizdec[i][j+1] = "Wall";
-                    }
-                    else {pizdec[i][j+1] = "Road";}
-                    if (listOfVertex.get(k).findInListEdgeByVertex2(listOfVertex.get(k+1)).getType() == Edge.Type.WALL) {
-                        pizdec[i][j+1] = "Wall";
-                    }
-                    else {pizdec[i][j+1] = "Road";}
-                }
-            }
-        }
     }
 }

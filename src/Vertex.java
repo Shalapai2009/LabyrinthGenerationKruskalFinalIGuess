@@ -5,7 +5,6 @@ public class Vertex {
 
     private int x;
     private int y;
-    private Type type = Type.Empty;
     private ArrayList<Edge> listEdge = new ArrayList<>();
     //private boolean isolated = true;
     public Vertex(int x,int y) {
@@ -38,29 +37,7 @@ public class Vertex {
         }
         return false;
     }
-    public Boolean getBooleanDefiniteEdge(Edge edge) {
-        return listEdge.contains(edge);
-    }
-    public Edge removeEdge(int x) {
-        return listEdge.remove(x);
-    }
-    public String getStringCoordinates() {
-        return Integer.toString(x)+";"+Integer.toString(y);
-    }
 
-    // Отдел типов
-    public Type getType() {
-        return type;
-    }
-    public void makeEmpty() {
-        this.type = Type.Empty;
-    }
-    public void makeFull() {
-        this.type = Type.Full;
-    }
-    public static enum Type {
-        Empty,Full;
-    }
 
     // Здесь отступает жизнь
     // Зажатая в тески
@@ -86,7 +63,7 @@ public class Vertex {
     public void addChildList(Vertex vertexChild) {
         vertexChildList.add(vertexChild);
         vertexChild.setParent(this);
-       // updateSize(vertexChild);
+        updateSize(vertexChild);
     }
 
     public List<Vertex> getVertexChildList() {

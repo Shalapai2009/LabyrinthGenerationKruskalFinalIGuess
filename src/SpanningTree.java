@@ -14,11 +14,18 @@ public class SpanningTree {
         for (Edge edge: listOfEdge) {
             if (edge.getVertex2().getFinal() != edge.getVertex1().getFinal()) {
                 edge.getVertex1().addChildList(edge.getVertex2().getFinal());
+
+
                 edge.makeWay();
                 edge.getBROTHA().makeWay();
                 listOfTrue.add(edge);
 
+            } else {
+                //edge.getBROTHA().setBROTHA(null);
+                //edge.setBROTHA(null);
+                //graph.DeleteEdge(edge);
             }
+
         }
     }
 
