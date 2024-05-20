@@ -77,6 +77,7 @@ public class Graph {
         SpanningTree spanningTree = new SpanningTree(this);
         spanningTree.createDaFuckingTrulyGoddessSpanningTree();
         List<Edge> listOfTrue = spanningTree.getListOfTrue();
+        Vertex spanningVertex = spanningTree.getSpanningVertex();
         System.out.println("whomp whomp");
         return listOfTrue;
     }
